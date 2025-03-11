@@ -24,6 +24,11 @@ public:
     {
         inOrder(root);
     }
+    void postOrder(Node*);
+    void postOrder()
+    {
+        postOrder(root);
+    }
 };
 
 // creating the tree
@@ -85,10 +90,19 @@ void Tree::inOrder(Node *p)
         inOrder(p->rchild);
     }
 }
+void Tree::postOrder(Node *p)
+{
+    if(p)
+    {
+        postOrder(p->lchild);
+        postOrder(p->rchild);
+        cout<< p -> value << " ";
+    }
+}
 int main()
 {
     Tree T;
     T.createTree();
-    T.inOrder();
+    T.postOrder();
     return 0;
 }
