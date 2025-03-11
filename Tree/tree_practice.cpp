@@ -19,6 +19,11 @@ public:
     {
         preOrder(root);
     }
+    void inOrder(Node *);
+    void inOrder()
+    {
+        inOrder(root);
+    }
 };
 
 // creating the tree
@@ -71,10 +76,19 @@ void Tree::preOrder(Node *p)
         preOrder(p->rchild);
     }
 }
+void Tree::inOrder(Node *p)
+{
+    if (p)
+    {
+        inOrder(p->lchild);
+        cout << p->value << " ";
+        inOrder(p->rchild);
+    }
+}
 int main()
 {
     Tree T;
     T.createTree();
-    T.preOrder();
+    T.inOrder();
     return 0;
 }
