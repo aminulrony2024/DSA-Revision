@@ -6,6 +6,11 @@ public:
     int value;
     Node *lchild;
     Node *rchild;
+    Node(int value)
+    {
+        this -> value = value;
+        lchild = rchild = nullptr;
+    }
 };
 class Tree
 {
@@ -35,14 +40,11 @@ public:
 void Tree::createTree()
 {
     Node *p, *t;
-    root = new Node;
     queue<Node *> q;
     int x;
     cout << "Enter data of root : ";
     cin >> x;
-    root->value = x;
-    root->lchild = nullptr;
-    root->rchild = nullptr;
+    root = new Node(x);
     q.emplace(root);
     while (!q.empty())
     {
@@ -52,10 +54,7 @@ void Tree::createTree()
         cin >> x;
         if (x != -1)
         {
-            t = new Node;
-            t->value = x;
-            t->lchild = nullptr;
-            t->rchild = nullptr;
+            t = new Node(x);
             p->lchild = t;
             q.emplace(t);
         }
@@ -63,10 +62,7 @@ void Tree::createTree()
         cin >> x;
         if (x != -1)
         {
-            t = new Node;
-            t->value = x;
-            t->lchild = nullptr;
-            t->rchild = nullptr;
+            t = new Node(x);
             p->rchild = t;
             q.emplace(t);
         }
