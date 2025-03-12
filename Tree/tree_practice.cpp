@@ -34,6 +34,11 @@ public:
     {
         postOrder(root);
     }
+    void levelOrder(Node*);
+    void levelOrder()
+    {
+        levelOrder(root);
+    }
 };
 
 // creating the tree
@@ -95,10 +100,29 @@ void Tree::postOrder(Node *p)
         cout<< p -> value << " ";
     }
 }
+void Tree::levelOrder(Node *p)
+{
+    queue<Node*> q;
+    q.emplace(p);
+    while(!q.empty())
+    {
+        p = q.front();
+        q.pop();
+        cout<< p -> value <<" ";
+        if(p -> lchild)
+        {
+            q.emplace(p -> lchild);
+        }
+        if(p -> rchild)
+        {
+            q.emplace(p -> rchild);
+        }
+    }
+}
 int main()
 {
     Tree T;
     T.createTree();
-    T.postOrder();
+    T.levelOrder();
     return 0;
 }
